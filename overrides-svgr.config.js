@@ -1,6 +1,7 @@
 // .svgrrc.js
 
 module.exports = {
+  memo: true,
   native: true,
   svgProps: {
     height: 40,

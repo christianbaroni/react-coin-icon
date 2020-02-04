@@ -1,39 +1,48 @@
-import { toLower, upperFirst } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { createElement } from 'react';
-import styled from 'styled-components/primitives';
+import { StyleSheet, Text, View } from 'react-native';
 import FallbackIcon from './FallbackIcon';
 import * as CoinIcons from './icons';
 
-const Container = styled.View`
-  align-items: center;
-  background-color: #f7f7f8;
-  border-radius: ${({ size }) => (size / 2)};
-  height: ${({ size }) => (size)};
-  justify-content: center;
-  overflow: hidden;
-  width: ${({ size }) => (size)};
-`;
+const sx = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    backgroundColor: '#f7f7f8',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+});
 
 const CoinIcon = ({
   bgColor,
   fallbackRenderer,
   size,
-  symbol,
+  style,
+  symbol = '',
   ...props
 }) => {
-  const formattedSymbol = upperFirst(toLower(symbol));
-  const renderer = CoinIcons[formattedSymbol] || fallbackRenderer;
+  const formattedSymbol = symbol.charAt(0).toUpperCase() + symbol.slice(1).toLowerCase();
 
   return (
-    <Container {...props} size={size}>
-      {createElement(renderer, {
+    <View
+      {...props}
+      style={[
+        sx.container,
+        {
+          borderRadius: size / 2,
+          height: size,
+          width: size,
+        },
+        style,
+      ]}
+    >
+      {createElement(CoinIcons[formattedSymbol] || fallbackRenderer, {
         bgColor,
         height: size,
         symbol: formattedSymbol,
         width: size,
       })}
-    </Container>
+    </View>
   );
 }
 

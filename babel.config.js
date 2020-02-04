@@ -1,8 +1,11 @@
 module.exports = {
   plugins: [
-    ['lodash'],
+    ["module-resolver", {
+      "alias": {
+        "^react-native$": "react-native-web"
+      }
+    }],
     '@babel/plugin-proposal-object-rest-spread',
-    'babel-plugin-styled-components'
   ],
   presets: [
     '@babel/env',
