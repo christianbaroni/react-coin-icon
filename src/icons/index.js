@@ -196,6 +196,7 @@ export { default as Gusd } from './Gusd.js';
 export { default as Gvt } from './Gvt.js';
 export { default as Gxs } from './Gxs.js';
 export { default as Gzr } from './Gzr.js';
+export { default as Hex } from './Hex.js';
 export { default as Hight } from './Hight.js';
 export { default as Hodl } from './Hodl.js';
 export { default as Hot } from './Hot.js';
